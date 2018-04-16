@@ -67,7 +67,7 @@ public class RamCache<KeyType, ValueType> implements Cacheble<KeyType, ValueType
     }
 
     @Override
-    public Set<KeyType> getMostFrequencyUsedObject() {
+    public Set<KeyType> getMostFrequentlyUsedKeys() {
         CompratorClass comprator = new CompratorClass(frequencyMap);
         TreeMap<KeyType, Integer> sorted = new TreeMap<>(comprator);
         sorted.putAll(frequencyMap);
@@ -83,22 +83,5 @@ public class RamCache<KeyType, ValueType> implements Cacheble<KeyType, ValueType
     }
 
 
-    public class CompratorClass implements Comparator {
-        Map base;
 
-        public CompratorClass(Map base) {
-            this.base = base;
-        }
-
-        @Override
-        public int compare(Object o1, Object o2) {
-            if ((Integer) base.get(o1) < (Integer) base.get(o2)) {
-                return 1;
-            } else if (base.get(o2) == base.get(o2)) {
-
-                return 1;
-            }
-            return -1;
-        }
-    }
 }
